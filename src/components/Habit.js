@@ -6,4 +6,20 @@ import React from "react";
  *
  * TODO: implement the Habit component here
  */
-export default function Habit() {}
+export default function Habit({habit, onToggleHabit, onDeleteHabit}) {
+    return (
+        <li>
+            <span
+                style={{
+                    textDecoration: habit.completed ? "line-through" : "none",
+                }}
+            >
+                {habit.name}
+            </span>
+            <button onClick = {() => onToggleHabit(habit.id)}>
+                {habit.completed ? "undo" : "Complete"}
+            </button>
+            <button onClick={() => onDeleteHabit(habit.id)}>Delete</button>
+        </li>
+    );
+}
